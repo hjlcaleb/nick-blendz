@@ -19,3 +19,31 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(112, 112, 112);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navUL {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin: 10px;
+  padding: 0px;
+}
+
+
+#logo {
+  object-fit: cover;
+  width: 300px;
+  height: 75px;
+}
