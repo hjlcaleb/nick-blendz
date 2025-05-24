@@ -1,2 +1,2 @@
 # nick-blendz
-Public-facing fullstack website for our boy Nick
+Fullstack website for Nick Blendz
