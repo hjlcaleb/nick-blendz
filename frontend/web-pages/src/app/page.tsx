@@ -7,11 +7,11 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <NavBar />
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
+          className="nick"
+          src="/../photos/nick.png"
+          alt="Photo of Nick Ngo"
           width={180}
-          height={38}
+          height={80}
           priority
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
