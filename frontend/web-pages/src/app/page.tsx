@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NavBar from "./navbar";
 import InstagramPhoto from "./instagram-photo";
+import Footer from "./footer";
 
 const instagramImageUrls = [
   "/photos/IMG_0491.png",
@@ -26,7 +27,7 @@ export default function Home() {
 
           <div className="sticky grid grid-cols-2 sm:grid-cols-4 gap-4 position-fixed">
             {instagramImageUrls.map((url, index) => (
-              <InstagramPhoto key={index} src={url} alt={"Instagram post"} width={300} height={300} />
+              <InstagramPhoto key={index} src={url} alt={"Instagram post"} dim={300} />
             ))}
           </div>
 
@@ -44,8 +45,8 @@ export default function Home() {
         </div>
 
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-      </footer>
+
+      <Footer />
     </div>
   );
 }
