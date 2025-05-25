@@ -1,6 +1,11 @@
 import Image from 'next/image';
 
-export default function InstagramPhoto({ src, alt, dim }) {
+interface InstagramPhotoProps {
+    src: string;
+    alt: string;
+    dim: number;
+}
+export default function InstagramPhoto({ src, alt, dim }: InstagramPhotoProps) {
     return (
         <Image
             src={src}

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import NavBar from "./navbar";
-import InstagramPhoto from "./instagram-photo";
-import Footer from "./footer";
+import NavBar from "./components/navbar";
+import InstagramPhoto from "./components/instagram-photo";
+import Footer from "./components/footer";
 
 const instagramImageUrls = [
   "/photos/IMG_0491.png",
@@ -45,8 +45,6 @@ export default function Home() {
         </div>
 
       </main>
-
-      <Footer />
     </div>
   );
 }
