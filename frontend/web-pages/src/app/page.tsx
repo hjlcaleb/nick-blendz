@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import NavBar from "./components/navbar";
 import InstagramPhoto from "./components/instagram-photo";
@@ -16,7 +17,7 @@ const instagramImageUrls = [
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <NavBar />
         <div className="text-center">
@@ -30,21 +31,46 @@ export default function Home() {
               <InstagramPhoto key={index} src={url} alt={"Instagram post"} dim={300} />
             ))}
           </div>
-
         </div>
 
-        <div id="section4">
-          <Image
-            className="nick"
-            src="/photos/nick.png"
-            alt="Photo of Nick Ngo"
-            width={180}
-            height={80}
-            priority
-          />
-        </div>
+ {/* About Nick Section */}
+<div className="w-full text-center mt-16">
+          <h1 className="font-bold">ABOUT NICK</h1>
+</div>
+
+<div className="w-full flex justify-center mt-8">
+  <div className="flex flex-col sm:flex-row items-center gap-8 max-w-4xl">
+    {/* Nick's Image */}
+    <Image
+      className="rounded-lg"
+      src="/photos/nick.png"
+      alt="Photo of Nick Ngo"
+      width={300}
+      height={400}
+      priority
+    />
+
+    {/* About Text */}
+    <div className="text-center max-w-md">
+      <p className="mb-2">
+        Nick is a barber based in the Renton area, he specializes in fades, tapers, and cuts for all ages.
+      </p>
+      <p className="mb-2">
+        Known for top quality lineups, custom designs, and attention to detail. 
+      </p>
+      <p>📍 Renton, WA</p>
+    </div>
+  </div>
+</div>
+
+
+
+
 
       </main>
+      <Footer />
     </div>
   );
 }
+
+
