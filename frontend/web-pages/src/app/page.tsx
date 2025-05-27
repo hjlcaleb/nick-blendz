@@ -21,12 +21,12 @@ export default function Home() {
 <main className="flex-grow flex flex-col items-center p-8 pb-20 gap-8 sm:p-20">
         <NavBar />
         <div className="text-center">
-          <h1 className="font-bold">FOLLOW ME ON INSTAGRAM</h1>
+          <h1 className="font-bold pt-20">FOLLOW ME ON INSTAGRAM</h1>
           <a target="_blank" href="https://www.instagram.com/nickkblendz/">
             <h3 className="underline">@nickkblendz</h3>
           </a>
 
-          <div className="sticky grid grid-cols-2 sm:grid-cols-4 gap-4 position-fixed">
+          <div className="sticky grid grid-cols-2 sm:grid-cols-4 gap-4 position-fixed px-4 sm:px-8 lg:px-20">
             {instagramImageUrls.map((url, index) => (
               <InstagramPhoto key={index} src={url} alt={"Instagram post"} dim={300} />
             ))}

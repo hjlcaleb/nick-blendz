@@ -5,8 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  padding-right: 10rem;
-  padding-left: 10rem
+ 
 }
 
 @media (prefers-color-scheme: dark) {
