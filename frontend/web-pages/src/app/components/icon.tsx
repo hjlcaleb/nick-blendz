@@ -1,6 +1,11 @@
 import Image from 'next/image';
 
-export default function Icon({ src, link }) {
+interface IconProps {
+    src: string;
+    link: string;
+}
+
+export default function Icon({ src, link } : IconProps) {
     return (
         <a href={link} target="_blank">
             <Image
