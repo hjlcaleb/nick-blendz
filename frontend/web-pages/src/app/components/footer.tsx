@@ -5,7 +5,7 @@ import { IoIosMail } from "react-icons/io";
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-[#707070] text-white p-2.5 flex justify-between">
+<footer className="w-full bg-[#707070] text-white p-2.5 flex justify-between">
             <Link href="/">
                 <Image
                     id="logo"

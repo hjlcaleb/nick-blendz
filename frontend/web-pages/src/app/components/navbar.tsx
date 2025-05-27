@@ -2,11 +2,7 @@ import Link from 'next/link';
 
 export default function NavBar() {
   return (
-<<<<<<< HEAD
-<nav className="absolute top-0 w-full bg-[#707070] text-white p-2.5 flex justify-between">
-=======
-    <nav className="absolute top-0 left-0 w-full bg-[#707070] text-white p-2.5 flex justify-between">
->>>>>>> f5f7e243ae58a3d42eb66d8394b1dbe3eba5731f
+<nav className="w-full bg-[#707070] text-white p-2.5 flex justify-between">
       <Link href="/">
         <img id="logo" src="/photos/logo.png" />
       </Link>
