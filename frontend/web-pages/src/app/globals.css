@@ -5,7 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+<<<<<<< HEAD
  
+=======
+>>>>>>> f5f7e243ae58a3d42eb66d8394b1dbe3eba5731f
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +27,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .nav {
