@@ -1,40 +1,96 @@
 'use client';
 
-import NavBar from '../components/navbar';
-import Footer from '../components/footer';
+import { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import emailjs from 'emailjs-com';
+import 'react-datepicker/dist/react-datepicker.css';
 
-export default function Services() {
+export default function Booking() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    instagram: '',
+    email: '',
+    service: 'Haircut',
+    message: '',
+  });
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const bookingData = {
+      ...formData,
+      appointment_date: selectedDate.toISOString(),
+    };
+
+    try {
+      // ✅ Send to MySQL via your API route
+      const res = await fetch('/api/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert('Booking saved to database!');
+
+        // ✅ Optional: Also send with EmailJS
+        await emailjs.send(
+          'service_d9mpx4t',
+          'template_hrj234f',
+          {
+            ...formData,
+            date: selectedDate.toString(),
+          },
+          '63HB6ZvWl85W5jtXI'
+        );
+      } else {
+        alert('Error saving booking: ' + result.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert('There was an error sending your booking.');
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <NavBar />
+    <div className="p-8 max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6 text-center">Book an Appointment</h1>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className="border p-2" />
+        <input name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required className="border p-2" />
+        <input name="instagram" placeholder="Instagram Handle" value={formData.instagram} onChange={handleChange} required className="border p-2" />
+        <input name="email" placeholder="Email (optional)" value={formData.email} onChange={handleChange} className="border p-2" />
 
-      <main className="flex-grow flex flex-col items-center p-8 pb-20 gap-8 sm:p-20">
-        {/* Page Title */}
-        <div className="w-full text-center mt-8">
-          <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl tracking-wide">SERVICES</h1>
-        </div>
+        <select name="service" value={formData.service} onChange={handleChange} className="border p-2">
+          <option>Haircut</option>
+          <option>Haircut + Beard</option>
+          <option>Kids Haircut</option>
+        </select>
 
-        {/* Services List */}
-        <div className="w-full flex justify-center mt-4">
-          <div className="flex flex-col gap-6 text-center max-w-md w-full">
-            <div className="border-b border-gray-600 pb-4">
-              <p className="text-xl sm:text-2xl font-semibold">Haircut / Taper / Fade</p>
-              <p className="text-base sm:text-lg text-gray-300 mt-1">$30</p>
-            </div>
-            <div className="border-b border-gray-600 pb-4">
-              <p className="text-xl sm:text-2xl font-semibold">Haircut + Beard</p>
-              <p className="text-base sm:text-lg text-gray-300 mt-1">$35</p>
-            </div>
-            <div className="border-b border-gray-600 pb-4">
-              <p className="text-xl sm:text-2xl font-semibold">Kids Haircut</p>
-              <p className="text-base sm:text-lg text-gray-300 mt-1">$25</p>
-            </div>
-          </div>
-        </div>
-      </main>
+        <label>Select Date & Time:</label>
+        <DatePicker
+          selected={selectedDate}
+          onChange={(date) => setSelectedDate(date!)}
+          showTimeSelect
+          timeIntervals={45}
+          dateFormat="Pp"
+          className="border p-2"
+        />
 
-      <Footer />
+        <textarea name="message" placeholder="Additional message (optional)" value={formData.message} onChange={handleChange} className="border p-2" />
+
+        <button type="submit" className="bg-black text-white py-2 px-4 rounded">Submit</button>
+      </form>
     </div>
   );
 }
-
